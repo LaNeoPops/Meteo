@@ -1,12 +1,18 @@
+/* FOND D'ECRAN */
+
 body {
     background-color: rgb(221, 217, 217);
 }
+
+/* MISE EN PAGE DES TITRES */
 
 header {
     background-color: black;
     color:white;
     text-align: center;
 }
+
+/* MISE EN PAGE DU RESULTAT */
 
 main i {
     padding: 6px;
@@ -17,14 +23,21 @@ main .resultat {
     color : white;
 }
 
-main h2 {
-    text-align: center;
-}
-
-main h3 {
+main .ville {
+    display: none;
     text-align: center;
     padding: 10px;
     background-color: rgb(37, 36, 36);
+    margin: 10px;
+    border-radius: 10px;
+}
+
+main .position {
+    display: none;
+    text-align: center;
+    padding: 10px;
+    background-color: rgb(37, 36, 36);
+    margin: 10px;
     border-radius: 10px;
 }
 
@@ -36,6 +49,30 @@ main ul {
     text-decoration: none;
 }
 
+#jour {
+    padding: 0;
+}
+
+#jour li {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
+}
+
+#jour li img {
+    max-width: 50px;
+    max-height: 50px;
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+
+#jour li div {
+    display: flex;
+}
+
+/* MISE EN PAGE DES BOUTONS */
+
 button {
     border: none;
     padding: 10px 20px;
@@ -45,42 +82,4 @@ button {
 
 button:hover {
     background-color: #cccfd1;
-}
-
-.resultat {
-    margin-top: 20px;
-}
-
-#jour {
-    /* display: flex; Utilisation de Flexbox pour aligner les éléments en ligne */
-    flex-wrap: wrap; /* Permet aux éléments de passer à la ligne suivante si nécessaire */
-    padding: 0;
-    list-style-type: none; /* Enlève les puces de la liste */
-    margin: 0; /* Enlève les marges par défaut */
-}
-
-#jour li {
-    display: flex;
-    align-items: center; /* Centre verticalement les éléments à l'intérieur */
-    margin: 10px;
-    padding: 10px;
-    box-sizing: border-box; /* Inclut les marges et les bordures dans la largeur */
-}
-
-#jour li img {
-    max-width: 50px; /* Limite la taille de l'image */
-    max-height: 50px; /* Limite la hauteur de l'image */
-    margin-right: 10px; /* Espace à droite de l'image */
-    flex-shrink: 0; /* Empêche l'image de rétrécir */
-}
-
-#jour li div {
-    display: flex;
-    /* flex-direction: column; Empile les éléments verticalement dans la div */
-    justify-content: center; /* Centre verticalement le contenu */
-}
-
-#jour li h4, #jour li p {
-    margin: 0; /* Supprime les marges par défaut */
-    font-size: 14px; /* Taille de police */
 }

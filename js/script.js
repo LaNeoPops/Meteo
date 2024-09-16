@@ -4,10 +4,8 @@ $(document).ready(function () {
         let ville = $('#chercher').val().trim();
 
         if (ville) {
-            // Remplace les espaces par des tirets pour les noms composés
             ville = ville.replace(/\s+/g, '-').toLowerCase(); // Convertir les espaces en tirets
 
-            // Vider le contenu de la div avant d'afficher la météo
             $('#villeOuPosition').empty();
             $('#jour').empty();
 
@@ -24,15 +22,13 @@ $(document).ready(function () {
                 let lat = position.coords.latitude;
                 let lon = position.coords.longitude;
 
-                // Vider le contenu de la div avant d'afficher les coordonnées
                 $('#villeOuPosition').empty();
                 $('#jour').empty();
 
-                // Afficher la latitude et la longitude dans la div
-                $('#villeOuPosition').html(`<h3>Votre position actuelle : Latitude ${lat.toFixed(2)}, Longitude ${lon.toFixed(2)}</h3>`);
+                $('#villeOuPosition').html(`<h3 class="position">Votre position actuelle : Latitude ${lat.toFixed(2)}, Longitude ${lon.toFixed(2)}</h3>`);
 
-                // Appeler la fonction pour obtenir la météo à partir de la géolocalisation
                 getWeatherByLocation(lat, lon);
+
             }, function (error) {
                 alert('Erreur de géolocalisation : ' + error.message);
             });
@@ -49,6 +45,8 @@ function getWeatherByCity(city) {
         method: 'GET',
         success: function (data) {
             displayWeather(data);
+            // // Rendre la div .ville visible
+            $('.ville').css('display', 'block');
         },
         error: function () {
             alert('Ville introuvable. Veuillez entrer un nom de ville valide.');
@@ -63,7 +61,8 @@ function getWeatherByLocation(lat, lon) {
         method: 'GET',
         success: function (data) {
             displayWeather(data);
-            $('.city-name').hide();
+            // // Rendre la div .ville visible
+            $('.position').css('display', 'block');
         },
         error: function () {
             alert('Impossible de récupérer les données météo.');
@@ -71,12 +70,11 @@ function getWeatherByLocation(lat, lon) {
     });
 }
 
-// Fonction pour afficher la météo
 function displayWeather(data) {
     let cityName = data.city_info.name || "Localisation inconnue";
 
     // Ajouter le nom de la ville après avoir vidé la div
-    $('#villeOuPosition').append(`<h3 class="city-name">Météo pour : ${cityName}</h3>`);
+    $('#villeOuPosition').append(`<h3 class="ville">Météo pour : ${cityName}</h3>`);
 
     // Tableau contenant les prévisions de 5 jours
     const forecasts = [
